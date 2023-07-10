@@ -9,7 +9,8 @@
 <body>
 	<div class="form">
 		<h1>Enter Your Details</h1>
-		<form action="signup" method="post" style="padding:20px;margin: 20px;border: 2px solid black; width: 30%">
+		<form action="signup" method="post"
+			style="padding: 20px; margin: 20px; border: 2px solid black; width: 30%">
 			<table>
 				<tr>
 					<th>Name:</th>

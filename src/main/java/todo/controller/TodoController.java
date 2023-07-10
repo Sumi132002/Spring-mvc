@@ -1,15 +1,21 @@
 package todo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import todo.dto.UserInfo;
+import todo.service.TodoService;
 
 @Controller
 public class TodoController {
 
-	@RequestMapping("signup")
-	@ResponseBody
-	public String signup() {
-		return "This is Signup Logic method";
+	@Autowired
+	TodoService service;
+
+	@PostMapping("signup")
+	public String signup(UserInfo userInfo, ModelMap model) {
+		return service.signup(userInfo, model);
 	}
 }
