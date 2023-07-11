@@ -1,5 +1,7 @@
 package todo.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,30 @@ public class TodoDao {
 	EntityManager manager;
 
 	public void save(UserInfo userInfo) {
+		//
+		// try {
+		// manager.getTransaction().begin();
+		// manager.persist(userInfo);
+		// manager.getTransaction().commit();
+		// return true;
+		// } catch (Exception e) {
+		// manager.getTransaction().commit();
+		// return false;
+		// }
+
 		manager.getTransaction().begin();
 		manager.persist(userInfo);
 		manager.getTransaction().commit();
+
+	}
+
+	public UserInfo findByEmail(String email) {
+		List<UserInfo> list = manager.createQuery("select x from UserInfo x where email=?1").setParameter(1, email)
+				.getResultList();
+		if (list.isEmpty())
+			return null;
+		else
+			return list.get(0);
 	}
 
 }

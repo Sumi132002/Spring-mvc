@@ -10,8 +10,9 @@
 
 	<div class="form">
 	<h1 style="color:green">${pass}</h1>
+	<h1 style="color:red">${fail}</h1>
 		<h1>Welcome to TODO APP</h1>
-		<form action="" method="post"
+		<form action="login" method="post"
 			style="padding: 20px; margin: 20px; border: 2px solid black; width: 30%">
 			<table>
 				<tr>
