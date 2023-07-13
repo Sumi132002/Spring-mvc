@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import todo.dto.Task;
 import todo.dto.UserInfo;
 
 @Component
@@ -16,21 +17,15 @@ public class TodoDao {
 	EntityManager manager;
 
 	public void save(UserInfo userInfo) {
-		//
-		// try {
-		// manager.getTransaction().begin();
-		// manager.persist(userInfo);
-		// manager.getTransaction().commit();
-		// return true;
-		// } catch (Exception e) {
-		// manager.getTransaction().commit();
-		// return false;
-		// }
-
 		manager.getTransaction().begin();
 		manager.persist(userInfo);
 		manager.getTransaction().commit();
+	}
 
+	public void save(Task task) {
+		manager.getTransaction().begin();
+		manager.persist(task);
+		manager.getTransaction().commit();
 	}
 
 	public UserInfo findByEmail(String email) {

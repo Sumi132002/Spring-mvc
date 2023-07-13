@@ -10,10 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("todo")
 public class MyConfiguration {
-	
+
 	@Bean
-	public EntityManager getEntityManager()
-	{
+	public EntityManager getEntityManager() {
 		return Persistence.createEntityManagerFactory("dev").createEntityManager();
 	}
 

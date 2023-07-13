@@ -1,27 +1,26 @@
 package todo.dto;
 
-import java.util.List;
+import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Entity
 @Data
-public class UserInfo {
+@Component
+public class Task {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String name;
-	@Column(unique = true)
-	private String email;
-	private String password;
+	int id;
+	String name;
+	String description;
+	LocalDate date;
 
-	@OneToMany
-	List<Task> tasks;
 }

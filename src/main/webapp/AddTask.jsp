@@ -4,32 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Add Task</title>
 </head>
 <body>
-
-	<h1>Welcome to TODO APP</h1>
-	<form action="login" method="post"
+	<form action="addtask" method="post"
 		style="padding: 20px; margin: 20px; border: 2px solid black; width: 30%">
-		<table>
+		<table align="center">
 			<tr>
 				<th><h2 align="center" style="color: green">${pass}</h2>
 					<h2 align="center" style="color: red">${fail}</h2></th>
 			</tr>
 			<tr>
-				<th>Email:</th>
-				<th><input type="email" name="email" required></th>
+				<th>Name:</th>
+				<th><input type="text" name="name" required></th>
 			</tr>
 			<tr>
-				<th>Password:</th>
-				<th><input type="password" name="password" required></th>
+				<th>Description:</th>
+				<th><textarea rows="5" name="description" cols="20"></textarea></th>
 			</tr>
 			<tr>
-				<th><button>Login</button></th>
+				<th>Date:</th>
+				<th><input type="date" name="day"></th>
+			</tr>
+			<tr>
+				<th><button>Add</button></th>
 				<th><button type="reset">Cancel</button></th>
 			</tr>
 		</table>
 	</form>
-	<a href="Signup.jsp"><button>Signup here</button></a>
 </body>
 </html>
