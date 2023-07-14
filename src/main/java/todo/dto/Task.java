@@ -22,5 +22,6 @@ public class Task {
 	String name;
 	String description;
 	LocalDate date;
+	boolean status;
 
 }

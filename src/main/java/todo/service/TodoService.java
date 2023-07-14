@@ -41,7 +41,12 @@ public class TodoService {
 			if (userInfo.getPassword().equals(password)) {
 				session.setAttribute("userInfo", userInfo);
 				model.put("pass", "Login Success");
-				model.put("list", userInfo.getTasks());
+				List<Task> list=userInfo.getTasks();
+				if(list==null)
+				{
+					list=new ArrayList<Task>();
+				}
+				model.put("list", list);
 				return "TodoHome.jsp";
 			} else {
 				model.put("fail", "Incorrect Password");
@@ -73,6 +78,29 @@ public class TodoService {
 		model.put("pass", "Task Added Success");
 		model.put("list", info.getTasks());
 		return "TodoHome.jsp";
+		}
+	}
+
+	public String changeStatus(HttpSession session, ModelMap model, int id) {
+		UserInfo info = (UserInfo) session.getAttribute("userInfo");
+		if(info==null)
+		{
+			model.put("fail", "Invalid Session");
+			return "Login.jsp";
+		}
+		else {
+			Task task=dao.findById(id);
+			
+			if(task.isStatus())
+				task.setStatus(false);
+			else
+				task.setStatus(true);
+			
+			dao.update(task);
+			
+			model.put("pass", "Status Changed Success");
+			model.put("list", info.getTasks());
+			return "TodoHome.jsp";
 		}
 	}
 

@@ -35,6 +35,11 @@ public class TodoController {
 		return service.addTask(task, day, model, session);
 	}
 
+	@GetMapping("/changestatus")
+	public String changeStatus(HttpSession session, ModelMap model, @RequestParam int id) {
+		return service.changeStatus(session,model,id);
+	}
+
 	@GetMapping("/logout")
 	public String logout(HttpSession session, ModelMap model) {
 		session.invalidate();

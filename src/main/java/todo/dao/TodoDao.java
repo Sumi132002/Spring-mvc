@@ -37,4 +37,14 @@ public class TodoDao {
 			return list.get(0);
 	}
 
+	public Task findById(int id) {
+		return manager.find(Task.class, id);
+	}
+
+	public void update(Task task) {
+		manager.getTransaction().begin();
+		manager.merge(task);
+		manager.getTransaction().commit();
+	}
+
 }
