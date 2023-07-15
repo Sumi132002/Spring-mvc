@@ -104,4 +104,55 @@ public class TodoService {
 		}
 	}
 
+	public String deleteTask(HttpSession session, ModelMap model, int id) {
+		UserInfo info = (UserInfo) session.getAttribute("userInfo");
+		if(info==null)
+		{
+			model.put("fail", "Invalid Session");
+			return "Login.jsp";
+		}
+		else {
+			Task task=dao.findById(id);
+			info.getTasks().remove(task);
+			dao.update(info);
+			
+			dao.delete(task);
+			model.put("pass", "Task Deleted Success");
+			model.put("list", info.getTasks());
+			return "TodoHome.jsp";
+			
+		}
+	}
+
+	public String update(HttpSession session, ModelMap model, int id) {
+		UserInfo info = (UserInfo) session.getAttribute("userInfo");
+		if(info==null)
+		{
+			model.put("fail", "Invalid Session");
+			return "Login.jsp";
+		}
+		else {
+			Task task=dao.findById(id);
+			model.put("task", task);
+			return "Update.jsp";
+			
+		}
+	}
+
+	public String updateTask(Task task, String day, ModelMap model, HttpSession session) {
+		task.setDate(LocalDate.parse(day));
+		UserInfo info = (UserInfo) session.getAttribute("userInfo");
+		if(info==null)
+		{
+			model.put("fail", "Invalid Session");
+			return "Login.jsp";
+		}
+		else {
+		dao.update(task);
+		
+		model.put("pass", "Task Updated Success");
+		model.put("list", info.getTasks());
+		return "TodoHome.jsp";
+	}
+	}
 }

@@ -46,5 +46,17 @@ public class TodoDao {
 		manager.merge(task);
 		manager.getTransaction().commit();
 	}
+	
+	public void delete(Task task) {
+		manager.getTransaction().begin();
+		manager.remove(task);
+		manager.getTransaction().commit();
+	}
+
+	public void update(UserInfo info) {
+		manager.getTransaction().begin();
+		manager.merge(info);
+		manager.getTransaction().commit();
+	}
 
 }

@@ -39,6 +39,22 @@ public class TodoController {
 	public String changeStatus(HttpSession session, ModelMap model, @RequestParam int id) {
 		return service.changeStatus(session,model,id);
 	}
+	
+	@GetMapping("/delete")
+	public String deleteTask(HttpSession session, ModelMap model, @RequestParam int id) {
+		return service.deleteTask(session,model,id);
+	}
+	
+	@GetMapping("update")
+	public String update(HttpSession session, ModelMap model, @RequestParam int id)
+	{
+		return service.update(session,model,id);
+	}
+	
+	@PostMapping("updatetask")
+	public String updateTask(Task task, @RequestParam String day, ModelMap model, HttpSession session) {
+		return service.updateTask(task, day, model, session);
+	}
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session, ModelMap model) {

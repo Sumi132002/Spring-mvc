@@ -33,8 +33,8 @@
 				<th><%=task.getDate()%></th>
 				<th><%if(task.isStatus())%>Completed<%else%>Incomplete</th>
 				<th><a href="changestatus?id=<%=task.getId()%>"><button>Change</button></a></th>
-				<th><button>Delete</button></th>
-				<th><button>Update</button></th>
+				<th><a href="delete?id=<%=task.getId()%>"><button>Delete</button></a></th>
+				<th><a href="update?id=<%=task.getId()%>"><button>Update</button></a></th>
 			</tr>
 			<%} %>
 		</table>
