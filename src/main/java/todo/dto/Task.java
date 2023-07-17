@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 @Entity
-@Data
+
 @Component
 public class Task {
 
@@ -23,5 +23,35 @@ public class Task {
 	String description;
 	LocalDate date;
 	boolean status;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 }
